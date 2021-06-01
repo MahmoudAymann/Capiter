@@ -6,9 +6,8 @@
 
 
     <fragment
-        android:id="@+id/productFragment"
-        android:name="com.capiter.delivery.ui.product.ProductFragment"
-        tools:layout="@layout/fragment_products">
-    </fragment>
-
+        android:id="@+id/deliveryProductFragment"
+        android:name="com.capiter.delivery.ui.product.DeliveryProductFragment"
+        android:label="DeliveryProductFragment"
+        tools:layout="@layout/fragment_delivery_products"/>
 </navigation>

@@ -1,6 +1,7 @@
 package com.capiter.delivery.ui.product
 
-import com.capiter.main.data.remote.UserApiService
+import com.capiter.delivery.model.ListItem
+import com.capiter.main.data.remote.DeliveryApiService
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -8,59 +9,36 @@ import timber.log.Timber
 import javax.inject.Inject
 
 class DeliveryProductRepository @Inject constructor(
-    private val userApiService: UserApiService
+    private val deliveryApiService: DeliveryApiService
 ) {
     fun getProductsApiObs(
         page: Int,
-        onSuccessCallBack: (List<ProductsResponseItem>) -> Unit,
+        onSuccessCallBack: (List<ListItem>) -> Unit,
         onErrorCallBack: (String?) -> Unit
     ) {
-        userApiService.getProductsObs(page)
+        deliveryApiService.getProductsObs()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                onSuccessCallBack(it)
+                mapToAdapterList(it) {
+                }
             }, {
                 onErrorCallBack(it.localizedMessage)
             })
     }
 
-    fun addToCart(item: ProductItem) {
-        userDao.insert(item)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({
-                Timber.e("")
-                getAllInCart {}
-            }, {
-                Timber.e("$it")
-            })
-    }
 
-
-    fun getAllInCart(callBack: (List<ProductItem>) -> Unit) {
-        userDao.getAllProducts().subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread()).subscribe({
-                Timber.e("$it")
-                callBack(it)
-            }, {
-                Timber.e("$it")
-            })
-    }
-
-    fun mapListTo(
-        sourceList: List<ProductsResponseItem?>,
-        callBack: (List<ProductItem>) -> Unit
+    private fun mapToAdapterList(
+        serverList: List<DeliveryProductResponseItem>,
+        callback: (List<ListItem>) -> Unit
     ) {
-        val originalList = Observable.fromArray(sourceList)
-        originalList.flatMap {
-            Observable.fromIterable(it)
-                .map { item -> ProductItem.convertFromSource(item) }
-                .toList()
-                .toObservable()
-        }.subscribe {
-            callBack(it)
+        val resultItems = arrayListOf<ListItem>()
+        val listOfHeaders = arrayListOf<String?>()
+        Observable.fromIterable(serverList).map {
+            listOfHeaders.add(it.orderName)
         }
+        Timber.e("${listOfHeaders.size}")
+
     }
 
 }

@@ -45,12 +45,12 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(),
         if (AppUtil.isUserApp()) {
             setNavHost(R.id.productFragment, R.navigation.user_nav_graph)
         }else{
-            setNavHost(R.id.productFragment, R.navigation.delivery_nav_graph)
+            setNavHost(R.id.deliveryProductFragment, R.navigation.delivery_nav_graph)
         }
     }
 
 
-    private fun setNavHost(startingFragId:Int,@NavigationRes navHostId:Int){
+    private fun setNavHost(startingFragId:Int, @NavigationRes navHostId:Int){
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragment_container_view) as NavHostFragment
         navController = navHostFragment.navController

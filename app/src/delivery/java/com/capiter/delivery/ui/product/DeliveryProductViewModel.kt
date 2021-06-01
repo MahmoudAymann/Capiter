@@ -1,6 +1,7 @@
 package com.capiter.delivery.ui.product
 
 import android.app.Application
+import com.capiter.delivery.model.DeliveryProductItem
 import com.capiter.main.R
 import com.capiter.main.base.network.Resource
 import com.capiter.main.base.viewmodel.AndroidBaseViewModel
@@ -9,20 +10,13 @@ import timber.log.Timber
 import javax.inject.Inject
 
 class DeliveryProductViewModel @Inject constructor(
-    app: Application, private val productRepository: ProductRepository
+    app: Application, private val productRepository: DeliveryProductRepository
 ) : AndroidBaseViewModel(app) {
 
-    val adapter = ProductAdapter(::onItemClick)
+    val adapter = DeliveryProductAdapter()
 
-    private fun onItemClick(item: ProductItem?) {
-        Timber.e("${item?.price}")
-    }
-
-    private fun loadDataOnAdapter(results: List<ProductsResponseItem?>?) {
+    private fun loadDataOnAdapter(results: List<DeliveryProductItem?>?) {
         results?.let {
-            productRepository.mapListTo(it) {list->
-                adapter.setList(list)
-            }
         }
     }
 
@@ -36,8 +30,8 @@ class DeliveryProductViewModel @Inject constructor(
             return
         }
         postResult(Resource.loading())
-        productRepository.getProductsApiObs(1, {
-            loadDataOnAdapter(it)
+        productRepository.getProductsApiObs(1,{
+//            loadDataOnAdapter(it)
             postResult(Resource.success())
         }) {
             postResult(Resource.error(it))

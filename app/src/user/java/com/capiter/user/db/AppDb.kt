@@ -1,4 +1,4 @@
-package com.capiter.main.data.local
+package com.capiter.user.db
 
 
 import androidx.room.Database

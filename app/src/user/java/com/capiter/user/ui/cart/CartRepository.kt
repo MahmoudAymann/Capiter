@@ -1,6 +1,6 @@
 package com.capiter.user.ui.cart
 
-import com.capiter.main.data.local.UserDao
+import com.capiter.user.db.UserDao
 import com.capiter.main.data.remote.UserApiService
 import com.capiter.user.ui.product.ProductItem
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers

@@ -20,4 +20,5 @@
     <string name="confirm_order">Confirm Order</string>
     <string name="order_name">Order Name</string>
     <string name="order_done">order has been created successfully</string>
+    <string name="my_orders">My Orders</string>
 </resources>

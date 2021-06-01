@@ -129,7 +129,7 @@ object AppUtil {
         }
     }
 
-    fun isUserApp() : Boolean = BuildConfig.FLAVOR == ConstString.USER_APP
+    fun isUserApp() : Boolean = BuildConfig.BUILD_TYPE == ConstString.USER_APP
 
 
 }

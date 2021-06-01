@@ -1,6 +1,6 @@
 package com.capiter.user.ui.product
 
-import com.capiter.main.data.local.UserDao
+import com.capiter.user.db.UserDao
 import com.capiter.main.data.remote.UserApiService
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable

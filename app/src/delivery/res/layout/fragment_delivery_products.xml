@@ -18,7 +18,7 @@
                     android:layout_height="match_parent"
                     app:adapter="@{viewModel.adapter}"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/item_product_view"
+                    tools:listitem="@layout/item_delivery_product_view"
                     />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
@@ -27,6 +27,6 @@
 
         <variable
             name="viewModel"
-            type="com.capiter.delivery.ui.product.ProductViewModel" />
+            type="com.capiter.delivery.ui.product.DeliveryProductViewModel" />
     </data>
 </layout>

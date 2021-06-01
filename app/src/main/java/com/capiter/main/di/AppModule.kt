@@ -2,14 +2,12 @@ package com.capiter.main.di
 
 import android.app.Application
 import android.content.Context
-import android.service.autofill.UserData
 import androidx.room.Room
 import com.capiter.main.BuildConfig
 import com.capiter.main.constants.ConstString
-import com.capiter.main.data.local.AppDb
+import com.capiter.user.db.AppDb
 import com.capiter.main.data.local.SessionManager
-import com.capiter.main.data.local.UserDao
-import com.capiter.main.data.remote.DeliveryApiService
+import com.capiter.user.db.UserDao
 import com.capiter.main.data.remote.UserApiService
 import dagger.Module
 import dagger.Provides
@@ -81,12 +79,12 @@ class AppModule {
             .create(UserApiService::class.java)
     }
 
-    @Singleton
-    @Provides
-    fun provideDeliveryApiService(okHttpClient: OkHttpClient): DeliveryApiService {
-        return getRetrofitInstance(okHttpClient)
-            .create(DeliveryApiService::class.java)
-    }
+//    @Singleton
+//    @Provides
+//    fun provideDeliveryApiService(okHttpClient: OkHttpClient): DeliveryApiService {
+//        return getRetrofitInstance(okHttpClient)
+//            .create(DeliveryApiService::class.java)
+//    }
 
 
     private fun getRetrofitInstance(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()

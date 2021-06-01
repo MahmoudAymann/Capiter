@@ -15,15 +15,22 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+        signingConfig signingConfigs.debug
     }
 
     buildTypes {
-        release {
+        user {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            applicationIdSuffix ".user"
+        }
+
+        delivery {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            applicationIdSuffix ".delivery"
         }
     }
     compileOptions {
@@ -42,17 +49,6 @@ android {
 
     buildFeatures {
         dataBinding = true
-    }
-
-    flavorDimensions "default"
-    productFlavors{
-        user{
-            applicationId "com.capiter.user"
-        }
-
-        delivery{
-            applicationId "com.capiter.delivery"
-        }
     }
 }
 
