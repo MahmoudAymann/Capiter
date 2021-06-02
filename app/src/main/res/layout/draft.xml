@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="androidx.lifecycle.ViewModel" />
+
+        <variable
+            name="item"
+            type="com.capiter.main.base.view.BaseParcelable" />
+    </data>
+
+</layout>

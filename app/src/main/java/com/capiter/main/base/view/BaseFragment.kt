@@ -8,18 +8,14 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import com.capiter.main.BR
-import com.capiter.main.ui.activity.MainActivity
 import com.capiter.main.util.bindView
 import com.capiter.main.util.castToActivity
-import com.capiter.main.util.replaceFragment
-import com.capiter.main.util.showKeyboard
 
 /**
  * Created by MahmoudAyman on 6/17/2020.
  **/
 
-abstract class BaseFragment<B : ViewDataBinding, VM : ViewModel> :
-    Fragment() {
+abstract class BaseFragment<B : ViewDataBinding, VM : ViewModel> : Fragment() {
 
     abstract fun pageTitle(): String?
 
@@ -39,15 +35,11 @@ abstract class BaseFragment<B : ViewDataBinding, VM : ViewModel> :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.setVariable(BR.viewModel, mViewModel)
+//        changeMainTitle(pageTitle())
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        changeMainTitle(pageTitle())
-    }
 
     fun closeFragment() {
-        showKeyboard(false)
         activity?.onBackPressed()
     }
 
@@ -58,15 +50,7 @@ abstract class BaseFragment<B : ViewDataBinding, VM : ViewModel> :
     }
 
     private fun changeMainTitle(title: String?) {
-        castToActivity<MainActivity> {
-            it?.changeTitle(title)
-        }
-    }
 
-    inline fun <reified T : BaseFragment<*, *>> replaceFragment(
-        bundle: Bundle? = null
-    ) {
-        activity?.replaceFragment<T>(bundle)
     }
 
 

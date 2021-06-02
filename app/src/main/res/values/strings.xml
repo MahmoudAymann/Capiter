@@ -1,14 +1,8 @@
 <resources>
-    <string name="all_data_required">add data req</string>
-    <string name="email">email</string>
-    <string name="password">password</string>
-    <string name="forgot_password">forgot pass?</string>
-    <string name="login">Login</string>
-    <string name="search">Search</string>
+    <string name="all_data_required">all data required</string>
     <string name="continue_">Continue</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
-    <string name="log_out_check_message">are you sure you want to logout?</string>
     <string name="exit_app">are you sure you want to exit the app?</string>
     <string name="exit">Exit</string>
     <string name="cancel">Cancel</string>
@@ -16,9 +10,9 @@
     <string name="server_error">server error</string>
     <string name="add_to_cart">Add to cart</string>
     <string name="cart">Cart</string>
-    <string name="product_name">Product Name…</string>
     <string name="confirm_order">Confirm Order</string>
-    <string name="order_name">Order Name</string>
+    <string name="order_name">Order Name…</string>
     <string name="order_done">order has been created successfully</string>
     <string name="my_orders">My Orders</string>
+    <string name="no_data_found">no data found</string>
 </resources>

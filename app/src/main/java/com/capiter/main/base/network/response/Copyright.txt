@@ -1,3 +1,0 @@
-All classes in this package is taken from https://github.com/haroldadmin/NetworkResponseAdapter
-All the copyrights reserved to them,
-Thanks to them anyway...

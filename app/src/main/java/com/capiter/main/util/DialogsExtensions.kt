@@ -23,11 +23,9 @@ object DialogsExtensions {
             this,
             SweetAlertDialog.SUCCESS_TYPE
         )
-            .setConfirmButton(getString(R.string.yes)) { sDialog ->
+            .setConfirmButton(getString(R.string.continue_)) { sDialog ->
                 sDialog.closeDialog()
                 onClick()
-            }.setCancelButton(getString(R.string.no)) {
-                it.closeDialog()
             }
             .setConfirmButtonBackgroundColor(getColorFromRes(R.color.colorPrimary))
         message?.let {

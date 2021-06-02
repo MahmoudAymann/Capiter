@@ -1,5 +1,5 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'kotlin-android'
     id 'kotlin-parcelize'
     id 'kotlin-kapt'
@@ -10,7 +10,6 @@ android {
     compileSdkVersion 30
 
     defaultConfig {
-        applicationId "com.capiter.main"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
@@ -21,16 +20,9 @@ android {
     }
 
     buildTypes {
-        user {
+        release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            applicationIdSuffix ".user"
-        }
-
-        delivery {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            applicationIdSuffix ".delivery"
         }
     }
     compileOptions {
@@ -56,56 +48,55 @@ dependencies {
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
     implementation project(path: ':sweetdialoglibrary')
     //Main Libs, key: main
-    implementation(main.kotlin)
-    implementation (main.kotlinCore)
-    implementation (main.appCompat)
-    implementation (main.materialDesign)
-    implementation (main.constraintLayout)
-    implementation (main.fragmentKtx)
-    implementation (main.activityKtx)
-    implementation (main.lifecycleViewmodelKtx)
-    implementation (main.lifecycleRuntimeKtx)
-    implementation (main.lifecycleLivedataKtx)
-    implementation (main.lifecycleViewmodelSavedstateKtx)
-    implementation (main.lifecycleJava8)
-    implementation ("androidx.navigation:navigation-ui-ktx:2.3.5")
-    implementation ("androidx.navigation:navigation-fragment-ktx:2.3.5")
-    implementation(main.room)
+    api(main.kotlin)
+    api (main.kotlinCore)
+    api (main.appCompat)
+    api (main.materialDesign)
+    api (main.constraintLayout)
+    api (main.fragmentKtx)
+    api (main.activityKtx)
+    api (main.lifecycleViewmodelKtx)
+    api (main.lifecycleRuntimeKtx)
+    api (main.lifecycleLivedataKtx)
+    api (main.lifecycleViewmodelSavedstateKtx)
+    api (main.lifecycleJava8)
+    api ("androidx.navigation:navigation-ui-ktx:2.3.5")
+    api ("androidx.navigation:navigation-fragment-ktx:2.3.5")
+    api(main.room)
     kapt (main.roomCompiler)
-    implementation (main.roomKtx)
-    implementation (main.retrofit)
-    implementation (main.retrofitCoroutinesAdapter)
+    api (main.roomKtx)
+    api (main.retrofit)
+    api (main.retrofitCoroutinesAdapter)
 
     //External Libs, key: external
-    implementation (external.bottomNav)
-    implementation (external.timber)
-    implementation (external.sdpAndroid)
-    implementation (external.sspAndroid)
-    implementation (external.converterGson)
-    implementation (external.gson)
-    implementation (external.loggingInterceptors)
-    implementation (external.dexter)
-    implementation (external.pixImage)
-    implementation (external.glide)
+    api (external.bottomNav)
+    api (external.timber)
+    api (external.sdpAndroid)
+    api (external.sspAndroid)
+    api (external.converterGson)
+    api (external.gson)
+    api (external.loggingInterceptors)
+    api (external.dexter)
+    api (external.pixImage)
+    api (external.glide)
     kapt (external.glideCompiler)
-    implementation (external.swipeRefresh)
-    implementation (external.circularImage)
+    api (external.swipeRefresh)
+    api (external.circularImage)
 
     
     def dagger = '2.16'
-    implementation "com.google.dagger:dagger:$dagger"
-    implementation "com.google.dagger:dagger-android:$dagger"
-    implementation "com.google.dagger:dagger-android-support:$dagger"
+    //noinspection GradleDependency
+    api "com.google.dagger:dagger:$dagger"
+    //noinspection OutdatedLibrary
+    api "com.google.dagger:dagger-android:$dagger"
+    api "com.google.dagger:dagger-android-support:$dagger"
     kapt "com.google.dagger:dagger-compiler:$dagger"
     kapt "com.google.dagger:dagger-android-processor:$dagger"
 
     //Rx java
-    implementation 'io.reactivex.rxjava3:rxjava:3.0.13-RC5'
-    implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
-    implementation 'com.squareup.retrofit2:adapter-rxjava3:2.9.0'
-    implementation("androidx.lifecycle:lifecycle-reactivestreams-ktx:2.3.1")
-    implementation "androidx.room:room-rxjava3:2.3.0"
-
-
-
+    api 'io.reactivex.rxjava3:rxjava:3.0.13-RC5'
+    api 'io.reactivex.rxjava3:rxandroid:3.0.0'
+    api 'com.squareup.retrofit2:adapter-rxjava3:2.9.0'
+    api("androidx.lifecycle:lifecycle-reactivestreams-ktx:2.3.1")
+    api "androidx.room:room-rxjava3:2.3.0"
 }

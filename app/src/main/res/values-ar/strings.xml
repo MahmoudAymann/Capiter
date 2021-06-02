@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="all_data_required">يجب ملئ جميع البيانات</string>
+    <string name="continue_">متابعة</string>
+    <string name="yes">نعم</string>
+    <string name="no">لا</string>
+    <string name="exit_app">هل أنت متأكد من الخروج من التطبيق؟</string>
+    <string name="exit">خروج</string>
+    <string name="cancel">الغاء</string>
+    <string name="network_error">من فضلك تحقق من الاتصال بالانترنت</string>
+    <string name="server_error">مشكلة فى السيرفر</string>
+    <string name="add_to_cart">إضافة للسلة</string>
+    <string name="cart">سلة المشتريات</string>
+    <string name="confirm_order">تأكيد الطلب</string>
+    <string name="order_name">اسم الطلب…</string>
+    <string name="order_done">تم ارسال الطلب بنجاح</string>
+    <string name="my_orders">طلباتى</string>
+    <string name="no_data_found">لا توجد بيانات</string>
+</resources>

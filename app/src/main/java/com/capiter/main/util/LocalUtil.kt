@@ -8,21 +8,20 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.capiter.main.constants.ConstString
-import com.capiter.main.util.SharedPrefUtil.getPrefLanguage
-import com.capiter.main.util.SharedPrefUtil.setPrefLanguage
+import com.capiter.main.data.local.SessionManager
 import java.util.*
 
 /**
  * Created by MahmoudAyman on 7/17/2020.
  **/
-object LocalUtil {
+class LocalUtil(val sessionManager: SessionManager) {
 
     fun onAttach(base: Context): Context {
-        return setLocale(base, base.getPrefLanguage())
+        return setLocale(base, sessionManager.getPrefLanguage())
     }
 
-    fun setLocale(context: Context, language: String): Context {
-        context.setPrefLanguage(language)
+    private fun setLocale(context: Context, language: String): Context {
+        sessionManager.setPrefLanguage(language)
         return if (isBiggerThanOrEqualAndroidN24()) {
             updateResources(context, language)
         } else updateResourcesLegacy(context, language)
@@ -62,7 +61,7 @@ object LocalUtil {
 
 
     fun changeLanguage(activity: AppCompatActivity) {
-        val locale = Locale(activity.getPrefLanguage())
+        val locale = Locale(sessionManager.getPrefLanguage())
         val activityRes: Resources = activity.resources
         val activityConfig = activityRes.configuration
         if (isBiggerThanOrEqualAndroidN17())
@@ -76,7 +75,7 @@ object LocalUtil {
             appConfig,
             appRes.displayMetrics
         )
-        when (activity.getPrefLanguage()) {
+        when (sessionManager.getPrefLanguage()) {
             ConstString.LANG_AR -> {
                 activity.window.decorView.layoutDirection = View.LAYOUT_DIRECTION_RTL
             }

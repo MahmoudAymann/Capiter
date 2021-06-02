@@ -1,2 +1,2 @@
-include ':app', ':sweetdialoglibrary'
+include ':user', ':delivery', ':app', ':sweetdialoglibrary'
 rootProject.name = "Capiter"
